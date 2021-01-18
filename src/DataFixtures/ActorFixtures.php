@@ -5,9 +5,15 @@ namespace App\DataFixtures;
 use App\Entity\Actor;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
-class ActorFixtures extends Fixture
+class ActorFixtures extends Fixture implements DependentFixtureInterface
 {  
+    public function getDependencies()  
+    {
+        return [ProgramFixtures::class];  
+    }
+
     const ACTORS = [
         'Andrey Lincoln',
         'Noman Reedus',
@@ -20,9 +26,10 @@ class ActorFixtures extends Fixture
         foreach (self::ACTORS as $key=> $actorName){
             $actor = new Actor();
             $actor->setName($actorName);
-
+            
+            $actor->addProgram($this->getReference(ProgramFixtures::PROGRAM_REFERENCE));   
+            
             $manager->persist($actor);
-            $this->addReference('actor' . $key, $actor);
         }
             $manager->flush() ;
     }

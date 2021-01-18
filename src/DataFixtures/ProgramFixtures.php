@@ -5,8 +5,16 @@ namespace App\DataFixtures;
 use App\Entity\Program;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
-class ProgramFixtures extends Fixture{
+class ProgramFixtures extends Fixture implements DependentFixtureInterface{
+
+    public const PROGRAM_REFERENCE = 'walking';
+    
+    public function getDependencies()  
+    {
+        return [CategoryFixtures::class];  
+    }
 
     const PROGRAMS = [
         'Walking Dead' => [
@@ -34,7 +42,7 @@ class ProgramFixtures extends Fixture{
                             'category' => 'categorie_4',
 
                             ],
-    ];
+    ];    
 
     public function load(ObjectManager $manager)
     {   
@@ -45,8 +53,12 @@ class ProgramFixtures extends Fixture{
             
             $program->setCategory($this->getReference('category_4'));
             $manager->persist($program);
+            
+            
         }
             $manager->flush() ;
+            $this->addReference( self::PROGRAM_REFERENCE , $program);
+
     }
 
 
