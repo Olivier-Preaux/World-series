@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Program{% endblock %}
+{% block title %}Program {% endblock %}
 
 {% block body %}
-    <h1>Program</h1>
+    <h1>Programme / Saisons </h1>
 
     
 
@@ -13,13 +13,17 @@
             <img src="{{ program.poster }}" width="200" />
             </div>
             <div class='program'>
-            <h2>{{ program.category.name }}/{{ program.title }}</h2>
-            <p>Summary : {{ program.summary }}</p>
+            <h2>{{ program.category.name }} - {{ program.title }}</h2>
+            <p></p>
+            <p><strong>Résumé : </strong>{{ program.summary }}</p>
             </div>
             <div class='centre'><p><h2>Acteurs :</h2></p>
        
             {% for actor in program.actors %}
-               <p><a href="{{ path('actor_show', { 'id': actor.id } ) }}">{{ actor.name }} </p>
+            <div class='actors'>
+            <a href="{{ path('actor_show', { 'id': actor.id } ) }}">
+            {{ actor.name }}</a>
+            </div>
             {% else %}
                Aucun acteur pour cette série
             {% endfor %}
@@ -29,7 +33,7 @@
     <div class="seasons">
     {% for season in seasons %}
     <div>
-    <h3><a href="{{ path('program_show_season' , { 'program_id' : program.id , 'season_id': season.id }) }}">Saisons : {{ season.number }}</a> - Année : {{ season.year }}</h3>Description :{{ season.description }}
+    <h4><a href="{{ path('program_show_season' , { 'program_id' : program.id , 'season_id': season.id }) }}">Saisons : {{ season.number }}</a> - Année : {{ season.year }}</h4>Description :{{ season.description }}
     </div>
     {% endfor %}
     </div>
@@ -43,7 +47,7 @@
     </br>
     
     <div class='centre'>
-    <a href="{{ path('program_edit', {'id': program.id}) }}">edit</a>
+    <a href="{{ path('program_edit', {'id': program.id}) }}">Modifier le Programme</a>
 
     {{ include('program/_delete_form.html.twig') }}
     </div>
