@@ -48,23 +48,27 @@ a{
     ". . .";
 }
 
+.actors a {
+  color : green ; 
+}
+
 table {
 border: medium solid #000000;
+margin:auto;
 }
+
 td, th {
 border: thin solid #6495ed;
+text-align : center ;
 }
 
 .seasons {
   display: grid;
   border : medium solid #000000 ;
-  grid-template-columns: 1fr 1fr 1fr 1fr ;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr ;
+  grid-template-rows: 1fr 1fr ;
   gap: 10px 0px;
-  grid-template-areas:
-    ". . . ."
-    ". . . ."
-    ". . . .";
+  
 }
 
 </style>
@@ -84,10 +88,10 @@ border: thin solid #6495ed;
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{ path('program_index') }}"> Programmes </a>
+          <a class="nav-link active" aria-current="page" href="{{ path('program_index') }}"> Liste des programmes </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ path('actor_index') }}">Acteurs</a>
+          <a class="nav-link" href="{{ path('actor_index') }}">Liste des acteurs</a>
         </li>
         <li class="nav-item dropdown">
           

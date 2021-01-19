@@ -20,7 +20,7 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager)
     {   
         $j = 0 ;
-        for ( $i=2010 ; $i <=2020 ; $i++) {
+        for ( $i=2010 ; $i <2020 ; $i++) {
             $j++;
 
             $faker  =  Faker\Factory::create('fr_FR');
