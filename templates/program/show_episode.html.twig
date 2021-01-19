@@ -22,9 +22,10 @@
         </tbody>
     </table>
 
-    <a href="{{ path('program_index') }}">back to list</a>
+    <div class='centre'>
 
     <a href="{{ path('episode_edit', {'id': episode.id}) }}">edit</a>
 
     {{ include('episode/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

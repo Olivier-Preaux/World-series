@@ -16,7 +16,7 @@
         <tbody>
         {% for actor in actors %}
             <tr>
-                <td>{{ actor.id }}</td>
+                <td>{{ loop.index }}</td>
                 <td>{{ actor.name }}</td>
                 <td>
                     <a href="{{ path('actor_show', {'id': actor.id}) }}">show</a>
@@ -32,5 +32,5 @@
     </table>
 
     <a href="{{ path('actor_new') }}">Create new</a><br>
-    <a href="{{ path('program_index') }}">back to list</a>
+   
 {% endblock %}

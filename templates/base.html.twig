@@ -4,34 +4,76 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
 
-    {% block stylesheets %}
+{% block stylesheets %}
+
         
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     
+<style>
 
-      <style>
 
-      body {
-         background-color : #ffffff;
-         text-align : center ;
-         font-size : 20px ;
-      }
+body {
+    background-color : #ffffff;         
+    font-size : 16px ;
+}
 
-      .maincontainer {
+.centre {
+    text-align: center;
+    font-size : 20px ;
+    }
+
+div {
+    margin : 2px ;
+    padding : 2px ;
+}
+
+a{
+  text-decoration : none ;
+  font-weight : bold ;
+}
+
+.maincontainer {
        
-        width : 70% ;
-        margin-left : 15% ;
-        margin-right : 15% ;
+    width : 80% ;
+    margin-left : 10% ;
+    margin-right : 10% ;
+}
 
-      }
+.containershow {
+  display: grid;
+  grid-template-columns: 0.8fr 1.5fr 0.7fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". . .";
+}
 
-      </style>
-    {% endblock %}
+table {
+border: medium solid #000000;
+}
+td, th {
+border: thin solid #6495ed;
+}
+
+.seasons {
+  display: grid;
+  border : medium solid #000000 ;
+  grid-template-columns: 1fr 1fr 1fr 1fr ;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 10px 0px;
+  grid-template-areas:
+    ". . . ."
+    ". . . ."
+    ". . . .";
+}
+
+</style>
+{% endblock %}
 
     </head>
     <body>
 
-        {% block navbar %} 
+{% block navbar %} 
 
 <nav class="navbar navbar-expand-lg navbar-light bg-primary">
   <div class="container-fluid">
@@ -42,10 +84,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="{{ path('program_index') }}"> Programmes </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="{{ path('actor_index') }}">Acteurs</a>
         </li>
         <li class="nav-item dropdown">
           
