@@ -12,6 +12,7 @@
                 <th>Categorie</th>
                
                 <th>Title</th>
+                 <th>Slug</th>
                 <th>Summary</th>
                 {# <th>Poster</th> #}
                 <th>actions</th>
@@ -26,6 +27,7 @@
                
                
                 <td><a href="{{ path('program_show', { 'id': program.id } ) }}">{{ program.title }}</a></td>
+                <td>{{ program.slug }}</td>
                 <td>{{ program.summary }}</td>
                 {# <td>{{ program.poster }}</td> #}
                 <td>

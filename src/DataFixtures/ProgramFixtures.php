@@ -3,11 +3,17 @@
 namespace App\DataFixtures;
 
 use App\Entity\Program;
+use App\Service\Slugify;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 class ProgramFixtures extends Fixture implements DependentFixtureInterface{
+
+    public function __construct(Slugify $slugify)
+    {
+        $this->slugify = $slugify;
+    }
 
     public const PROGRAM_REFERENCE = 'walking';
     
@@ -53,10 +59,12 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface{
     {   
         foreach (self::PROGRAMS as $programTitle => [ 'summary' => $programSummary , 'category' => $catégory , 'poster'=> $poster ] ){
             $program = new Program();
+            $slugify = new Slugify();
             $program->setTitle($programTitle);
             $program->setSummary($programSummary);
             $program->setPoster($poster);
-            
+            $slug = $slugify->generate($program->getTitle() ?? '');
+            $program->setSlug($slug);
             $program->setCategory($this->getReference('category_4'));
             $manager->persist($program);
             
