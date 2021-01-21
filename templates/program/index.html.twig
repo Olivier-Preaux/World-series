@@ -26,13 +26,13 @@
                  <td><a href="{{ path('category_index') }}">{{ program.category.name }}</a></td>
                
                
-                <td><a href="{{ path('program_show', { 'id': program.id } ) }}">{{ program.title }}</a></td>
+                <td><a href="{{ path('program_show', { 'slug' : program.slug  } ) }}">{{ program.title }}</a></td>
                 <td>{{ program.slug }}</td>
                 <td>{{ program.summary }}</td>
                 {# <td>{{ program.poster }}</td> #}
                 <td>
                     
-                    <a href="{{ path('program_edit', {'id': program.id}) }}">edit</a>
+                    <a href="{{ path('program_edit', {'slug' : program.slug }) }}">edit</a>
                 </td>
             </tr>
             

@@ -24,7 +24,7 @@
     </table>
 <h2>Les épisodes de la saison : </h2></br>
     {% for episode in episodes %}
-    <a href="{{ path('program_show_episode', { 'program_id' : program.id , 'season_id': season.id , 'episode_id': episode.id }) }}">Episode {{ episode.number }} </a>: {{ episode.title }}</br>
+    <a href="{{ path('program_show_episode', { 'program_slug' : program.slug , 'season_id': season.id , 'episode_slug': episode.slug }) }}">Episode {{ episode.number }} </a>: {{ episode.title }}</br>
     {% endfor %}
     </br>
 

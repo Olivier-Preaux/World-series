@@ -73,7 +73,7 @@ class SeasonController extends AbstractController
         }
 
         return $this->render('season/edit.html.twig', [
-            'season' => $season,
+            'season' => $season->getProgram(),
             'form' => $form->createView(),
         ]);
     }
