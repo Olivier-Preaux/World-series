@@ -1,0 +1,64 @@
+
+body {
+    background-color : #ffffff;         
+    font-size : 16px ;
+}
+
+.centre {
+    text-align: center;
+    font-size : 20px ;
+    }
+
+div {
+    margin : 2px ;
+    padding : 2px ;
+}
+
+a{
+  text-decoration : none ;
+  font-weight : bold ;
+}
+
+.maincontainer {
+       
+    width : 80% ;
+    margin-left : 10% ;
+    margin-right : 10% ;
+}
+
+.containershow {
+  display: grid;
+  grid-template-columns: 0.8fr 1.5fr 0.7fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". . .";
+}
+
+.actors a {
+  color : green ; 
+}
+
+table {
+border: medium solid #000000;
+margin:auto;
+}
+
+td, th {
+border: thin solid #6495ed;
+text-align : center ;
+}
+
+th {
+  background-color : grey ;
+  padding : 5px ;
+}
+
+.seasons {
+  display: grid;
+  border : medium solid #000000 ;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr ;
+  grid-template-rows: 1fr 1fr ;
+  gap: 10px 0px;
+  
+}
