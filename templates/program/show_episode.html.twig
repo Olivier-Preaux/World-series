@@ -3,6 +3,7 @@
 {% block title %}Episode{% endblock %}
 
 {% block body %}
+<body><div class='containerPage'>
     <h1>Episode</h1>
 
     <table class="table">
@@ -24,8 +25,13 @@
 
     <div class='centre'>
 
-    <a href="{{ path('episode_edit', {'slug': episode.slug}) }}">edit</a>
+    <a href="{{ path('episode_edit', {'slug': episode.slug}) }}">edit</a></br>
+    <a href="{{ path('episode_new')}}">new</a>
+
 
     {{ include('episode/_delete_form.html.twig') }}
-    </div>
+    </div></div>
+    </body>
 {% endblock %}
+
+

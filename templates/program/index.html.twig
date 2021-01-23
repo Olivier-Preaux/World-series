@@ -1,52 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Program index{% endblock %}
+{% block title %}Program index
+{% endblock %}
 
 {% block body %}
-    <h1>Toutes les séries  : </h1>
+	<body>
+		<div class='containerPage'>
 
-    <table class="index">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Categorie</th>
-               
-                <th>Title</th>
-                 <th>Slug</th>
-                <th>Summary</th>
-                {# <th>Poster</th> #}
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for program in programs %}
-         
-            <tr>
-                <td>{{ loop.index }}</td>
-                 <td><a href="{{ path('category_index') }}">{{ program.category.name }}</a></td>
-               
-               
-                <td><a href="{{ path('program_show', { 'slug' : program.slug  } ) }}">{{ program.title }}</a></td>
-                <td>{{ program.slug }}</td>
-                <td>{{ program.summary }}</td>
-                {# <td>{{ program.poster }}</td> #}
-                <td>
-                    
-                    <a href="{{ path('program_edit', {'slug' : program.slug }) }}">edit</a>
-                </td>
-            </tr>
-            
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    <div class='centre'>
 
-    <a href="{{ path('program_new') }}">Create new</a>
-    </br>
-    </div>
-   
+			<h1>TOUTES LES SERIES</h1>
+			<div class='containerIndexBlock'>
+
+				{% for program in programs %}
+					
+						<div class='containerAffiche'>
+							<a href="{{ path('program_show', { 'slug' : program.slug } ) }}">
+								<img src="{{ program.poster }}" alt="Image {{ loop.index }}"/>
+							</a>
+						</div>
+					
+				{% else %}
+					<tr>
+						<td colspan="5">no records found</td>
+					</tr>
+				{% endfor %}
+
+</div>
+			
+
+
+			<div class='indexPathCreateProgram'>
+
+				<a href="{{ path('program_new') }}">+ Ajouter une serie
+				</a>
+
+			</div>
+		
+        </div>
+	</body>
+
 {% endblock %}
