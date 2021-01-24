@@ -19,6 +19,7 @@ class ActorFixtures extends Fixture implements DependentFixtureInterface
         'Noman Reedus',
         'Lauren Cohan',
         'Danai Gurira',
+        'Anya Taylor-Joy ',
     ] ;
 
     public function load(ObjectManager $manager)

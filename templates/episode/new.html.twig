@@ -1,11 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Episode{% endblock %}
+{% block title %}New Episode
+{% endblock %}
 
 {% block body %}
-    <h1>Create new Episode</h1>
+	<h1>Create new Episode</h1>
 
-    {{ include('episode/_form.html.twig') }}
+	{{ form_start(form) }}
+        <div class='formEditEpisode'>
+            {{ form_row(form.title) }}
+        </div>
+        <div class='formEditEpisode'>
+            {{ form_row(form.number) }}
+            </div>
+         <div class='formEditEpisode'>
+            {{ form_row(form.season) }}
+            </div>
+         <div class='formEditEpisode'>
+            {{ form_row(form.synopsis) }}
+        </div>
+	{{ form_end(form) }}
 
-    <a href="{{ path('episode_index') }}">back to list</a>
+	<a href="{{ path('episode_index') }}">back to list</a>
 {% endblock %}

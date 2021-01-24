@@ -48,12 +48,18 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface{
                             'category' => 'categorie_4',
                             'poster' => 'https://m.media-amazon.com/images/M/MV5BYWNmY2Y1NTgtYTExMS00NGUxLWIxYWQtMjU4MjNkZjZlZjQ3XkEyXkFqcGdeQXVyMzQ2MDI5NjU@._V1_SY1000_CR0,0,666,1000_AL_.jpg',
                             ],
+        'Le jeu de la Dame' => [
+                            'summary' => 'En pleine Guerre froide, le parcours de huit à vingt-deux ans d\'une jeune orpheline prodige des échecs, Beth Harmon. Tout en luttant contre une addiction, elle va tout mettre en place pour devenir la plus grande joueuse d’échecs du monde.',
+                            'category' => 'categorie 5',
+                            'poster' => 'https://fr.web.img4.acsta.net/pictures/20/09/25/09/06/0492330.jpg'
+        ],
         'Walking Dead' => [
                             'summary' => 'Le policier Rick Grimes se réveille après un long coma. Il découvre avec effarement que le monde, ravagé par une épidémie, est envahi par les morts-vivants.',
                             'category' => 'categorie_4',
                             'poster' => 'https://m.media-amazon.com/images/M/MV5BZmFlMTA0MmUtNWVmOC00ZmE1LWFmMDYtZTJhYjJhNGVjYTU5XkEyXkFqcGdeQXVyMTAzMDM4MjM0._V1_.jpg',
                             ],
-    ];    
+       
+        ];  
 
     public function load(ObjectManager $manager)
     {   

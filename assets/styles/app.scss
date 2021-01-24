@@ -1,5 +1,12 @@
+@font-face {
+  font-family: "Excellence";
+  src:url("../Fonts/Excellence.otf") format("opentype");
+}
+
+
 
 body {
+    font-family: "Excellence" ,impact , helvetica , arial, sans-serif;
     background-color : #29323a;         
     font-size : 16px ;
     color : rgb(179, 179, 179) ;
@@ -19,14 +26,13 @@ body {
 
 .containerIndexBlock {  
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr ;
+    grid-template-rows: 1fr 1fr ;
     gap: 10px 10px;
     grid-template-areas:
-      ". . . ."
-      ". . . ."
-      ". . . .";
-      width : 90% ;
+      ". . . . ."
+      ". . . . .";
+      width : 84% ;
       margin-left: auto ;
       margin-right: auto;
   }
@@ -42,6 +48,11 @@ body {
     
   }
 
+  .indexPathCreateProgram{
+    text-align : center ;
+    font-size: 2em ;
+  }
+
 
   /// CSS Show >Program /// 
 
@@ -54,6 +65,11 @@ body {
 div {
   margin : 2px ;
   padding : 2px ;
+}
+
+.program h1{
+  font-weight: bold;
+  margin-bottom: 1em ;
 }
 
 a{
