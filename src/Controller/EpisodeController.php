@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Mime\Email;
+
 
 /**
  * @Route("/episode")
@@ -32,16 +32,17 @@ class EpisodeController extends AbstractController
     /**
      * @Route("/new", name="episode_new", methods={"GET","POST"})
      */
-    public function new(Request $request , Slugify $slugify, MailerInterface $mailer): Response
-    {
-        $episode = new Episode();
+    public function new(Request $request , Slugify $slugify, MailerInterface $mailer ): Response
+    {           
+        $episode = new Episode();         
         $form = $this->createForm(EpisodeType::class, $episode);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $slug = $slugify->generate($episode->getTitle());
-            $episode->setSlug($slug);
+            $episode->setSlug($slug);               
+            
             $entityManager->persist($episode);
             $entityManager->flush();
 
@@ -60,7 +61,7 @@ class EpisodeController extends AbstractController
         }
 
         return $this->render('episode/new.html.twig', [             
-            'episode' => $episode,
+            'episode' => $episode ,           
             'form' => $form->createView(),
         ]);
     }

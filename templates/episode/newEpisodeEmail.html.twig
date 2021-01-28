@@ -1,32 +1,44 @@
 {% extends '_email.html.twig' %}
 
-{% block title %}Episode{% endblock %}
+{% block title %}Episode
+{% endblock %}
 
-{% block body %}{% apply inline_css %}
+{% block body %}
+	{% apply inline_css %}
 
-    <style>
-        {# here, define your CSS styles as usual #}
-        h1 {
-            color: white ;
-            font-size : 40px ;
+	<style>
+		
+		h1 {
+			color: white;
+			font-size: 40px;
+		}
+
+
+		.emailTitleEpisode {
+			color: blue;
+		}
+
+		body {
+			font-weight: bold;
+			background-color: rgb(82, 81, 81);
         }
+        
+	</style>
+{% endapply %}
+</body>
 
-        body {
-            font-weight: bold;
-            background-color : rgb(82, 81, 81) ;
-        }
-    </style>
+<h1 class='emailTitleEpisode'>New episode
+	{{ episode.title }}
+	created</h1>
+<p>Hello, the new program
+	{{ episode.title }}
+	has been created on Wild Series</p>
+<p>Synopsis :
+	{{ episode.synopsis }}
 
-    </body>
-   
-    <h1>New episode {{ episode.title }} created</h1>
-    <p>Hello, the new program {{ episode.title }} has been created on Wild Series</p>
-    <p>Synopsis : {{ episode.synopsis }}
 
-    
-    <img src="{{ email.image ('@images/image_series.jpg') }}" alt="44">
-    
-    </body>   
-    {# ... #}
+<img src="{{ email.image ('@images/image_series.jpg') }}" alt="ws">
+</p>
+</body>
 
-{% endapply %}{% endblock %}
+{% endblock %}

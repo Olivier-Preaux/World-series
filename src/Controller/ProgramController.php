@@ -7,15 +7,15 @@ use App\Entity\Season;
 use App\Entity\Episode;
 use App\Form\ProgramType;
 use App\Repository\ProgramRepository;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use App\Service\Slugify;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Email;
+
 
 /**
  * @Route("/program")
@@ -45,7 +45,8 @@ class ProgramController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $slug = $slugify->generate($program->getTitle());
-        $program->setSlug($slug);
+            $program->setSlug($slug);
+
             $entityManager->persist($program);
             $entityManager->flush();
 
@@ -53,7 +54,10 @@ class ProgramController extends AbstractController
                 ->from('wilder@wildcodeschool.fr')
                 ->to('your_email@example.com')
                 ->subject('Une nouvelle série vient d\'être publiée !')
-                ->html($this->renderView('Program/newProgramEmail.html.twig', ['program' => $program]));
+                ->htmlTemplate('program/newProgramEmail.html.twig')
+                ->context([
+                    'program' => $program
+                ]);
 
             $mailer->send($email);
 
