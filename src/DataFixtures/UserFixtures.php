@@ -26,7 +26,7 @@ class UserFixtures extends Fixture
         $userReferenceNumber = 0;
 
         //Generate Women Users
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i <= 10; $i++) {
         // Création d’un utilisateur de type “contributeur” (= auteur)
         $contributor = new User();
         $contributor->setEmail($faker->email);

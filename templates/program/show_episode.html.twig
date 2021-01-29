@@ -33,7 +33,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>Author</th>
                 <th>Comment</th>
                 <th>Rate</th>
                 <th>actions</th>
@@ -42,7 +42,7 @@
         <tbody>
         {% for comment in comments|reverse %}
             <tr>
-                <td>{{ comment.id }}</td>
+                <td>{{ comment.author }}</td>
                 <td>{{ comment.comment }}</td>
                 <td>{{ comment.rate }}</td>
                 <td>
@@ -59,9 +59,11 @@
         {% endfor %}
         </tbody>
     </table>
+    {% if app.user %}  
     <div class='centre'>
     <h2> <a href="{{ path('comment_new', { 'slug' : episode.slug }  ) }}">+ Create new comment</a></h2>
     </div>
+    {% endif %}    
    
 
 

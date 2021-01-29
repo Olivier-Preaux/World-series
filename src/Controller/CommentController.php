@@ -36,7 +36,7 @@ class CommentController extends AbstractController
      * @Route("/new/{slug}",name="comment_new", methods={"GET","POST"})
      * @ParamConverter("episode", class="App\Entity\Episode", options={"mapping": {"slug": "slug"}})
      */
-    public function new(Request $request , episode $episode ): Response
+    public function new(Request $request , episode $episode): Response
     {   
        
         $comment = new Comment();
@@ -54,7 +54,7 @@ class CommentController extends AbstractController
             return $this->redirectToRoute('program_index');
         }
 
-        return $this->render('comment/new.html.twig', [
+        return $this->render('comment/new.html.twig', [            
             'episode' => $episode ,
             'comment' => $comment,
             'form' => $form->createView(),
@@ -70,7 +70,7 @@ class CommentController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'comment_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Comment $comment): Response
+    public function edit(Request $request, Comment $comment, program $program, season $season , episode $episode , CommentRepository $commentRepository): Response
     {
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
@@ -82,6 +82,9 @@ class CommentController extends AbstractController
         }
 
         return $this->render('comment/edit.html.twig', [
+            'program' => $program,
+            'season' => $season,
+            'episode' => $episode, 
             'comment' => $comment,
             'form' => $form->createView(),
         ]);

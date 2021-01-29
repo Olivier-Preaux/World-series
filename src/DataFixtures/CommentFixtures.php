@@ -20,7 +20,7 @@ class CommentFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager)
     {
-        for ( $i=1 ; $i <=6 ; $i++) {
+        for ( $i=1 ; $i <=10 ; $i++) {
             
             $faker  =  Faker\Factory::create('fr_FR');
             $comment = new Comment();           
@@ -28,10 +28,12 @@ class CommentFixtures extends Fixture implements DependentFixtureInterface
             $comment->setComment($faker->text(200));
             
             $comment->setEpisode($this->getReference(EpisodeFixtures::EPISODE_REFERENCE));
-
-               
+              
             $comment->setRate($faker->numberBetween(0,5));
-            $comment->setAuthor(($this->getReference('admin')));      
+
+           
+            $comment->setAuthor(($this->getReference('user'. $i )));     
+           
 
             $manager->persist($comment);
         }
