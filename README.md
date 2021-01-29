@@ -1,5 +1,8 @@
 # World-series
 
+Quête 19 :
+https://www.loom.com/share/7a15d3c005744f78977accabebf011f0
+
 Quête 18 :
 https://www.loom.com/share/62bb1f4559824fcd8457a3398220f28d
 
