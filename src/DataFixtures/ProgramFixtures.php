@@ -3,7 +3,9 @@
 namespace App\DataFixtures;
 
 use App\Entity\Program;
+use App\Entity\User;
 use App\Service\Slugify;
+use App\DataFixtures\UserFixtures;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -19,7 +21,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface{
     
     public function getDependencies()  
     {
-        return [CategoryFixtures::class];  
+        return [CategoryFixtures::class , UserFixtures::class ];  
     }
 
     const PROGRAMS = [        
@@ -57,7 +59,17 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface{
                             'summary' => 'En pleine Guerre froide, le parcours de huit à vingt-deux ans d\'une jeune orpheline prodige des échecs, Beth Harmon. Tout en luttant contre une addiction, elle va tout mettre en place pour devenir la plus grande joueuse d’échecs du monde.',
                             'category' => 'categorie_5',
                             'poster' => 'https://fr.web.img4.acsta.net/pictures/20/09/25/09/06/0492330.jpg'
-                                ],                    
+                                ], 
+        'Breaking Bad'=> [
+                            'summary' => 'La série se concentre sur Walter White, un professeur de chimie surqualifié et père de famille, qui, ayant appris qu\'il est atteint d\'un cancer du poumon en phase terminale, sombre dans le crime pour assurer l\'avenir financier de sa famille. Pour cela, il se lance dans la fabrication et la vente de méthamphétamine avec l\'aide de l\'un de ses anciens élèves, Jesse Pinkman2. L\'histoire se déroule à Albuquerque, au Nouveau-Mexique.',
+                            'category' => 'categorie_2',
+                            'poster' => 'https://fr.web.img5.acsta.net/pictures/19/06/18/12/11/3956503.jpg'
+                                        ],     
+        'The Witcher'=> [
+                            'summary' => 'Le sorceleur Geralt, un chasseur de monstres mutant, se bat pour trouver sa place dans un monde où les humains se révèlent souvent plus vicieux que les bêtes.',
+                            'category' => 'categorie_4',
+                            'poster' => 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSyN85JQSuwzb6AXatDSoCIkzN-GdNWKTegJ6q0pbC-0jNnoLoQ'
+                                                        ],                                   
         'Walking Dead' => [
                             'summary' => 'Le policier Rick Grimes se réveille après un long coma. Il découvre avec effarement que le monde, ravagé par une épidémie, est envahi par les morts-vivants.',
                             'category' => 'categorie_4',
@@ -68,16 +80,26 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface{
 
     public function load(ObjectManager $manager)
     {   
+        $i= 0 ;
+
         foreach (self::PROGRAMS as $programTitle => [ 'summary' => $programSummary , 'category' => $catégory , 'poster'=> $poster ] ){
+            
+           
+            
             $program = new Program();
             $slugify = new Slugify();
+            
             $program->setTitle($programTitle);
             $program->setSummary($programSummary);
             $program->setPoster($poster);
+            $program->setOwner(($this->getReference('user'.$i )));
+            $i++ ;
             $slug = $slugify->generate($program->getTitle() ?? '');
             $program->setSlug($slug);
             $program->setCategory($this->getReference('category_4'));
             $manager->persist($program);
+
+           
             
             
         }

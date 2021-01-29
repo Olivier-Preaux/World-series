@@ -12,31 +12,31 @@
 			<div class='containerIndexBlock'>
 
 				{% for program in programs %}
-					
-						<div class='containerAffiche'>
-							<a href="{{ path('program_show', { 'slug' : program.slug } ) }}">
-								<img src="{{ program.poster }}" alt="Image {{ loop.index }}"/>
-							</a>
-						</div>
-					
+
+					<div class='containerAffiche'>
+						<a href="{{ path('program_show', { 'slug' : program.slug } ) }}">
+							<img src="{{ program.poster }}" alt="Image {{ loop.index }}"/>
+						</a>
+					</div>
+
 				{% else %}
 					<tr>
 						<td colspan="5">no records found</td>
 					</tr>
 				{% endfor %}
 
-</div>
-			
-
-
-			<div class='indexPathCreateProgram'>
-
-				<a href="{{ path('program_new') }}">+ Ajouter une serie
-				</a>
-
 			</div>
-		
-        </div>
+
+
+			{% if is_granted("ROLE_ADMIN" , "ROLE_CONTRIBUTOR") %}
+				<div class='indexPathCreateProgram'>
+					<a href="{{ path('program_new') }}">+ Ajouter une serie
+					</a>
+				</div>
+			{% endif %}
+
+
+		</div>
 	</body>
 
 {% endblock %}

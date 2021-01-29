@@ -1,58 +1,67 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Program {% endblock %}
+{% block title %}Program
+{% endblock %}
 
 {% block body %}
-<body><div class='containerPage'>
-   
-    
-
-    <div class="containershow">
-
-             <div class='poster'>
-            <img src="{{ program.poster }}" width="200" />
-            </div>
-            <div class='program'>
-            <h1>Programme / Saisons </h1>
-
-            <h2>{{ program.category.name }} - {{ program.title }}</h2>
-            <p></p>
-            <p><strong>Résumé : </strong>{{ program.summary }}</p>
-            </div>
-            <div class='centre'><p><h2>Acteurs :</h2></p>
-       
-            {% for actor in program.actors %}
-            <div class='actors'>
-            <a href="{{ path('actor_show', { 'id': actor.id } ) }}">
-            {{ actor.name }}</a>
-            </div>
-            {% else %}
-               Aucun acteur pour cette série
-            {% endfor %}
-            </div>
-       
-    </div>
-    <div class="seasons">
-    {% for season in seasons %}
-    <div>
-    <h4><a href="{{ path('program_show_season' , { 'slug' : program.slug , 'season_id': season.id }) }}">Saisons : {{ season.number }}</a> - Année : {{ season.year }}</h4>Description :{{ season.description }}
-    </div>
-    {% endfor %}
-    </div>
-
-    
-    
-
-       
+	<body>
+		<div class='containerPage'>
 
 
-    </br>
-    
-    <div class='centre'>
-    <a href="{{ path('program_edit', {'slug' : program.slug }) }}">Modifier le Programme</a>
+			<div class="containershow">
 
-    {{ include('program/_delete_form.html.twig') }}
-    </div>
-</div></body>
-    
-{% endblock %}
+				<div class='poster'>
+					<img src="{{ program.poster }}" width="200"/>
+				</div>
+				<div class='program'>
+					<h1>Programme / Saisons
+					</h1>
+
+					<h2>{{ program.category.name }}
+						-
+						{{ program.title }}</h2>
+					<p></p>
+					<p>
+						<strong>Résumé :
+						</strong>
+						{{ program.summary }}</p>
+				</div>
+				<div class='centre'>
+					<p>
+						<h2>Acteurs :</h2>
+					</p>
+
+					{% for actor in program.actors %}
+						<div class='actors'>
+							<a href="{{ path('actor_show', { 'id': actor.id } ) }}">
+								{{ actor.name }}</a>
+						</div>
+					{% else %}
+						Aucun acteur pour cette série
+					{% endfor %}
+				</div>
+
+			</div>
+			<div class="seasons">
+				{% for season in seasons %}
+					<div>
+						<h4>
+							<a href="{{ path('program_show_season' , { 'slug' : program.slug , 'season_id': season.id }) }}">Saisons :
+								{{ season.number }}</a>
+							- Année :
+							{{ season.year }}</h4>Description :{{ season.description }}
+					</div>
+				{% endfor %}
+			</div>
+
+
+		</br>
+
+		<div class='centre'>
+			{% if is_granted("ROLE_ADMIN") %}
+				<a href="{{ path('program_edit', { 'slug': program.slug} ) }}">Éditer le Programme</a>
+				{{ include('program/_delete_form.html.twig') }}
+			{% endif %}
+		</div>
+	</body>
+</div></body>{% endblock %}

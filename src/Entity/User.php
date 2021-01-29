@@ -51,14 +51,20 @@ class User implements UserInterface
      */
     private $comments;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Program::class, mappedBy="owner")
+     */
+    private $programs;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->programs = new ArrayCollection();
     }
 
     public function __toString() {
 
-        return $this->getEmail();
+        return $this->getUsername();
     }
 
     public function getId(): ?int
@@ -85,7 +91,7 @@ class User implements UserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->email;
+        return (string) $this->username;
     }
 
     /**
@@ -182,6 +188,36 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($comment->getAuthor() === $this) {
                 $comment->setAuthor(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Program[]
+     */
+    public function getPrograms(): Collection
+    {
+        return $this->programs;
+    }
+
+    public function addProgram(Program $program): self
+    {
+        if (!$this->programs->contains($program)) {
+            $this->programs[] = $program;
+            $program->setOwner($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProgram(Program $program): self
+    {
+        if ($this->programs->removeElement($program)) {
+            // set the owning side to null (unless already changed)
+            if ($program->getOwner() === $this) {
+                $program->setOwner(null);
             }
         }
 

@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Service\Slugify;
 use Doctrine\ORM\Mapping as ORM ;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 
 /**
@@ -24,10 +24,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 class CommentController extends AbstractController
 {
     #[Route('/', name: 'comment_index', methods: ['GET'])]
-    public function index(CommentRepository $commentRepository): Response
-    {
+    public function index(CommentRepository $commentRepository ): Response   {   
+        
+
         return $this->render('comment/index.html.twig', [
             'comments' => $commentRepository->findAll(),
+          
         ]);
     }
 
@@ -70,8 +72,14 @@ class CommentController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'comment_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Comment $comment, program $program, season $season , episode $episode , CommentRepository $commentRepository): Response
+    public function edit(Request $request, Comment $comment, episode $episode , CommentRepository $commentRepository): Response
     {
+
+        // Check wether the logged in user is the owner of the program
+        if (!($this->getUser() == $comment->getAuthor())) {
+            // If not the owner, throws a 403 Access Denied exception
+            throw new AccessDeniedException('Only the author can edit the comment!');
+        }
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
 
@@ -81,9 +89,7 @@ class CommentController extends AbstractController
             return $this->redirectToRoute('comment_index');
         }
 
-        return $this->render('comment/edit.html.twig', [
-            'program' => $program,
-            'season' => $season,
+        return $this->render('comment/edit.html.twig', [          
             'episode' => $episode, 
             'comment' => $comment,
             'form' => $form->createView(),

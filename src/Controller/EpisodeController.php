@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Episode;
+use App\Entity\Program;
+use App\Entity\Season;
 use App\Form\EpisodeType;
 use App\Repository\CommentRepository;
 use App\Repository\EpisodeRepository;
@@ -61,7 +63,7 @@ class EpisodeController extends AbstractController
             return $this->redirectToRoute('program_index');
         }
 
-        return $this->render('episode/new.html.twig', [             
+        return $this->render('episode/new.html.twig', [           
             'episode' => $episode ,           
             'form' => $form->createView(),
         ]);

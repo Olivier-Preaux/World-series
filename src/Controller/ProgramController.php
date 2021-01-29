@@ -29,17 +29,17 @@ class ProgramController extends AbstractController
      * @Route("/", name="program_index", methods={"GET"})
      */
     public function index(ProgramRepository $programRepository): Response
-    {   
+    {
         return $this->render('program/index.html.twig', [
             'programs' => $programRepository->findAll(),
-           
+
         ]);
     }
 
     /**
      * @Route("/new", name="program_new", methods={"GET","POST"})
      */
-    public function new(Request $request , Slugify $slugify , MailerInterface $mailer): Response
+    public function new(Request $request, Slugify $slugify, MailerInterface $mailer): Response
     {
         $program = new Program();
         $form = $this->createForm(ProgramType::class, $program);
@@ -49,6 +49,7 @@ class ProgramController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $slug = $slugify->generate($program->getTitle());
             $program->setSlug($slug);
+            $program->setOwner($this->getUser());
 
             $entityManager->persist($program);
             $entityManager->flush();
@@ -78,7 +79,7 @@ class ProgramController extends AbstractController
      * @ParamConverter("program", class="App\Entity\Program", options={"mapping": {"slug": "slug"}})
      */
     public function show(Program $program): Response
-    {   
+    {
         $season = $program->getSeasons();
         return $this->render('program/show.html.twig', [
             'program' => $program,
@@ -112,7 +113,7 @@ class ProgramController extends AbstractController
      */
     public function delete(Request $request, Program $program): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$program->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $program->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($program);
             $entityManager->flush();
@@ -129,9 +130,9 @@ class ProgramController extends AbstractController
      */
     public function showSeason(program $program, season $season)
     {
-       $episodes = $season->getEpisodes() ;
-       
-       
+        $episodes = $season->getEpisodes();
+
+
         return $this->render('program/show_season.html.twig', [
             'program' => $program,
             'season' => $season,
@@ -139,15 +140,15 @@ class ProgramController extends AbstractController
         ]);
     }
 
-        /**
+    /**
      * Show episode by program slug , season id and episode slug
      * @Route("/{program_slug}/season/{season_id}/episode/{episode_slug} ", name="program_show_episode", requirements={"program"="\d+", "season"="\d+" ,  "episode"="\d+"})
      * @ParamConverter("program", class="App\Entity\Program", options={"mapping": {"program_slug": "slug"}})
      * @ParamConverter("season", class="App\Entity\Season", options={"mapping": {"season_id": "id"}})
      * @ParamConverter("episode", class="App\Entity\Episode", options={"mapping": {"episode_slug": "slug"}})
      */
-    public function showEpisode(program $program, season $season , episode $episode , CommentRepository $commentRepository , Request $request )
-    {           
+    public function showEpisode(program $program, season $season, episode $episode, CommentRepository $commentRepository, Request $request)
+    {
         $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
@@ -158,16 +159,16 @@ class ProgramController extends AbstractController
             $entityManager->persist($comment);
             $entityManager->flush();
 
-            return $this->render('comment/new', [ 'episode' => $episode ]);
+            return $this->render('comment/new', ['episode' => $episode]);
         }
 
-        
+
         return $this->render('program/show_episode.html.twig', [
             'program' => $program,
             'season' => $season,
-            'episode' => $episode,   
-            'comments' => $commentRepository->findAll(),  
-            
+            'episode' => $episode,
+            'comments' => $commentRepository->findAll(),
+
         ]);
     }
 }
