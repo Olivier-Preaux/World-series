@@ -44,12 +44,15 @@
 							<button class="btn btn-outline-success" type="submit">Search</button>
 							<div class='blocLoginLogout'>
 								{% if app.user %}
-									{{ app.user.email }}
+									<a class ="aregister" href="{{ path('user_profile', { 'id' : app.user.getId }) }}">
+										Mon compte</a></br>
 									<a href="{{ path('app_logout') }}">
 										Se déconnecter</a>
 								{% else %}
 									<a href="{{ path('app_login') }}">
 										Se connecter</a>
+									<a class="senregistrer" href="{{ path('app_register') }}">
+										S'enregistrer</a>
 								{% endif %}
 							</div>
 						</form>
@@ -60,9 +63,9 @@
 
 		{% endblock %}
 
-		<div class="maincontainer"> {% block body %}{% endblock %}
+		{% block body %}{% endblock %}
 
-			<div/>
+			
 
 
 			{% block javascripts %}
@@ -70,5 +73,5 @@
 				{{ encore_entry_link_tags('app') }}
 			{% endblock %}
 		</body>
-	</body>
+	
 </html>

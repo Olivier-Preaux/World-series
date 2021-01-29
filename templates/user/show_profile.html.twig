@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+
+<ul class="list-group">
+<h1>Mon Profil</h1>
+  <li class="list-group-item">Mon Email : {{ app.user.email }}</li>  
+  <li class="list-group-item">Mon Nom :{{ app.user.username }}</li>
+  <li class="list-group-item">Ma bio :{{ app.user.bio }}</li>
+ 
+</ul>
+
+
+
+{% endblock %}
