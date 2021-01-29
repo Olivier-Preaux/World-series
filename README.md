@@ -1,7 +1,7 @@
 # World-series
 
 Quête 21 :
-https://www.loom.com/share/a5ecb676bd414816bd73b79193abcb3b
+https://www.loom.com/share/20d0420a000e4ae68afe69f9fe63bffd
 
 Quête 20 :
 https://www.loom.com/share/d60c3078e5d7491fb220d0fb8d8ca3c5
