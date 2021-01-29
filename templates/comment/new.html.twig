@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Comment{% endblock %}
+
+{% block body %}
+    <h1>Créer un nouveau commentaire de : {{app.user.email }} </h1>
+    <h2>Concernant l'épisode N°{{ episode.number }}<br>
+    Titre : {{ episode.slug }}</h2>
+
+    {{ include('comment/_form.html.twig') }}
+
+    <a href="{{ path('comment_index') }}">back to list</a>
+{% endblock %}

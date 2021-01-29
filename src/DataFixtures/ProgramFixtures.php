@@ -48,11 +48,16 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface{
                             'category' => 'categorie_4',
                             'poster' => 'https://m.media-amazon.com/images/M/MV5BYWNmY2Y1NTgtYTExMS00NGUxLWIxYWQtMjU4MjNkZjZlZjQ3XkEyXkFqcGdeQXVyMzQ2MDI5NjU@._V1_SY1000_CR0,0,666,1000_AL_.jpg',
                             ],
+        'Viking' => [
+                            'summary' => 'Les exploits d\'un groupe de Vikings mené par Ragnar Lothbrok, l\un des vikings les plus populaires de son époque et au destin semi-légendaire, sont narrés par la série. Ragnar serait d\'origine norvégienne et suédoise, selon les sources. Il est supposé avoir unifié les clans vikings en un royaume aux frontières indéterminées à la fin du viiie siècle (le roi Ecbert mentionne avoir vécu à la cour du roi Charlemagne, sacré empereur en l\'an 800). Mais il est surtout connu pour avoir été le promoteur des tout premiers raids vikings en terres chrétiennes, qu\'elles soient saxonnes, franques ou celtiques.',
+                            'category' => 'categorie_1',
+                            'poster' => 'https://i.pinimg.com/originals/95/87/46/9587468e8f263cf46fdbb1e21e18918f.jpg'
+                            ],
         'Le jeu de la Dame' => [
                             'summary' => 'En pleine Guerre froide, le parcours de huit à vingt-deux ans d\'une jeune orpheline prodige des échecs, Beth Harmon. Tout en luttant contre une addiction, elle va tout mettre en place pour devenir la plus grande joueuse d’échecs du monde.',
-                            'category' => 'categorie 5',
+                            'category' => 'categorie_5',
                             'poster' => 'https://fr.web.img4.acsta.net/pictures/20/09/25/09/06/0492330.jpg'
-        ],
+                                ],                    
         'Walking Dead' => [
                             'summary' => 'Le policier Rick Grimes se réveille après un long coma. Il découvre avec effarement que le monde, ravagé par une épidémie, est envahi par les morts-vivants.',
                             'category' => 'categorie_4',

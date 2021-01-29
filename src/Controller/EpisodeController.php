@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Episode;
 use App\Form\EpisodeType;
+use App\Repository\CommentRepository;
 use App\Repository\EpisodeRepository;
 use App\Service\Slugify;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -69,10 +70,11 @@ class EpisodeController extends AbstractController
     /**
      * @Route("/{id}", name="episode_show", methods={"GET"})
      */
-    public function show(Episode $episode): Response
+    public function show(Episode $episode , CommentRepository $comment): Response
     {
         return $this->render('episode/show.html.twig', [
             'episode' => $episode,
+            'comments' => $comment 
         ]);
     }
 

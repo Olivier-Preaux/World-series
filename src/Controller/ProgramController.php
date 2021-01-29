@@ -2,10 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Comment;
 use App\Entity\Program;
 use App\Entity\Season;
 use App\Entity\Episode;
+use App\Form\CommentType;
 use App\Form\ProgramType;
+use App\Repository\CommentRepository;
 use App\Repository\ProgramRepository;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use App\Service\Slugify;
@@ -143,12 +146,28 @@ class ProgramController extends AbstractController
      * @ParamConverter("season", class="App\Entity\Season", options={"mapping": {"season_id": "id"}})
      * @ParamConverter("episode", class="App\Entity\Episode", options={"mapping": {"episode_slug": "slug"}})
      */
-    public function showEpisode(program $program, season $season , episode $episode )
+    public function showEpisode(program $program, season $season , episode $episode , CommentRepository $commentRepository , Request $request )
     {           
+        $comment = new Comment();
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $comment->setAuthor($this->getUser());
+            $entityManager->persist($comment);
+            $entityManager->flush();
+
+            return $this->render('comment/new', [ 'episode' => $episode ]);
+        }
+
+        
         return $this->render('program/show_episode.html.twig', [
             'program' => $program,
             'season' => $season,
-            'episode' => $episode
+            'episode' => $episode,   
+            'comments' => $commentRepository->findAll(),  
+            
         ]);
     }
 }

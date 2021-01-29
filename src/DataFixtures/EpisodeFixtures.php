@@ -12,6 +12,8 @@ use phpDocumentor\Reflection\PseudoTypes\True_;
 
 class EpisodeFixtures extends Fixture implements DependentFixtureInterface
 {     
+    public const EPISODE_REFERENCE = '10';
+
     public function __construct(Slugify $slugify)
     {
         $this->slugify = $slugify;
@@ -24,7 +26,7 @@ class EpisodeFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager)
     {   
-            for ( $i=1 ; $i <=12 ; $i++) {
+        for ( $i=1 ; $i <=12 ; $i++) {
             
             $faker  =  Faker\Factory::create('fr_FR');
             $episode = new Episode();
@@ -38,14 +40,12 @@ class EpisodeFixtures extends Fixture implements DependentFixtureInterface
             $episode->setNumber($i);
             $episode->setTitle($faker->sentence(5, true));
             $slug = $slugify->generate($episode->getTitle() ?? '');
-            $episode->setSlug($slug);
-            
-        
-        
-        
-            $manager->persist($episode);
+            $episode->setSlug($slug);  
+  
+            $manager->persist($episode);            
         }
         
         $manager->flush();
+        $this->addReference( self::EPISODE_REFERENCE , $episode);
     }
 }
