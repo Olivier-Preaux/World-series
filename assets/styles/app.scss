@@ -41,7 +41,11 @@ body {
 ////////////////// PAGE INDEX ////////////////////
 .containerPage h1 {
   text-align: center ;
+  padding-left: 2em ;
+  padding-right : 2em ;
   margin-top : 2vh ;
+  border-radius: 5px;
+
 }
 
 .formSearch {
@@ -53,7 +57,7 @@ body {
 
 .formSearch h1 {
   margin-right : 9.8em  ;
-  margin-left: 20em ;
+  margin-left: 16em ;
 }
 
 .col-sm-10 {
@@ -169,7 +173,7 @@ grid-template-areas:
 }
 
 .actors a {
-color : rgb(4, 19, 161) ; 
+color : rgb(0, 0, 0) ; 
 }
  .actorBlock {  
    margin-left: 3em ;
@@ -215,6 +219,10 @@ background: linear-gradient(145deg, #44474c, #50555a);
 
 .seasons div {
   border :rgb(0, 0, 0);
+}
+
+.seasons a{
+  color : black ;
 }
 
 //// CSS Email 
