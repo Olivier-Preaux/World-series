@@ -39,23 +39,20 @@
 							<li class="nav-item dropdown"></li>
 
 						</ul>
-						<form class="d-flex">
-							<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-							<button class="btn btn-outline-success" type="submit">Search</button>
-							<div class='blocLoginLogout'>
+						<div class="blocLoginLogout">
 								{% if app.user %}
 									<a class ="aregister" href="{{ path('user_profile', { 'id' : app.user.getId }) }}">
 										Mon compte</a></br>
 									<a href="{{ path('app_logout') }}">
 										Se déconnecter</a>
 								{% else %}
-									<a href="{{ path('app_login') }}">
+									<a class ="aregister" href="{{ path('app_login') }}">
 										Se connecter</a>
 									<a class="senregistrer" href="{{ path('app_register') }}">
 										S'enregistrer</a>
 								{% endif %}
 							</div>
-						</form>
+						
 					</div>
 				</div>
 

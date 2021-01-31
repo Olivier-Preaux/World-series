@@ -7,8 +7,16 @@
 	<body>
 		<div class='containerPage'>
 
+<div class="formSearch">
+			<div><h1>TOUTES LES SERIES</h1></div>
+			
+				<div>{{ form_start(form) }}</div>
+				<div>{{ form_row(form.search) }}</div>
 
-			<h1>TOUTES LES SERIES</h1>
+				<div>
+					<button class="btn btn-outline-success" type="submit">Search</button>
+				</div>
+				<div>{{ form_end(form) }}</div></div>
 			<div class='containerIndexBlock'>
 
 				{% for program in programs %}

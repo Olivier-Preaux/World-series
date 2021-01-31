@@ -8,6 +8,7 @@ use App\Entity\Season;
 use App\Entity\Episode;
 use App\Form\CommentType;
 use App\Form\ProgramType;
+use App\Form\SearchProgramFormType;
 use App\Repository\CommentRepository;
 use App\Repository\ProgramRepository;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -28,10 +29,21 @@ class ProgramController extends AbstractController
     /**
      * @Route("/", name="program_index", methods={"GET"})
      */
-    public function index(ProgramRepository $programRepository): Response
-    {
+    public function index( Request $request, ProgramRepository $programRepository): Response
+    {   
+        $form = $this->createForm(SearchProgramFormType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $search = $form->getData()['search'];
+            $programs = $programRepository->findBy(['title' => $search]);
+        } else {
+            $programs = $programRepository->findAll();
+        }
+
         return $this->render('program/index.html.twig', [
-            'programs' => $programRepository->findAll(),
+            'programs' => $programs,
+            'form' => $form->createView(),
 
         ]);
     }

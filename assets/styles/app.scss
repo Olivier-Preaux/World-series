@@ -20,12 +20,14 @@ body {
 
 ////////// NAVBAR ////////////////
 
-.blocLoginLogout{
+.blocLoginLogout{  
+  display :flex ;
   width : 20em ;
   text-align: center ;
 }
 
 .blocLoginLogout .aregister{
+  margin-right: 1em ;
   color : white ;
 }
 
@@ -41,6 +43,22 @@ body {
   text-align: center ;
   margin-top : 2vh ;
 }
+
+.formSearch {
+  display : flex ;
+  flex-direction: row;
+  align-items: center;
+  width : 100% ;
+}
+
+.formSearch h1 {
+  margin-right : 9.8em  ;
+  margin-left: 20em ;
+}
+
+.col-sm-10 {
+  flex: 0 0 auto;
+  width: 100%;}
 
 .containerIndexBlock {  
     display: grid;
