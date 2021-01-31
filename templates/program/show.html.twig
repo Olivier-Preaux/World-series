@@ -13,20 +13,20 @@
 				<div class='poster'>
 					<img src="{{ program.poster }}" width="200"/>
 				</div>
-				<div class='program'>
-					<h1>Programme / Saisons
+				<div class='programBlock'>
+					<h1>{{ program.title }}
 					</h1>
 
 					<h2>{{ program.category.name }}
-						-
-						{{ program.title }}</h2>
+						
+						</h2>
 					<p></p>
 					<p>
 						<strong>Résumé :
 						</strong>
 						{{ program.summary }}</p>
 				</div>
-				<div class='centre'>
+				<div class='actorBlock'>
 					<p>
 						<h2>Acteurs :</h2>
 					</p>
@@ -45,11 +45,12 @@
 			<div class="seasons">
 				{% for season in seasons %}
 					<div>
-						<h4>
-							<a href="{{ path('program_show_season' , { 'slug' : program.slug , 'season_id': season.id }) }}">Saisons :
-								{{ season.number }}</a>
+						
+							<h4><a href="{{ path('program_show_season' , { 'slug' : program.slug , 'season_id': season.id }) }}">Saisons :
+								{{ season.number }}
 							- Année :
-							{{ season.year }}</h4>Description :{{ season.description }}
+							{{ season.year }}</h4></a>
+							Description :{{ season.description }}
 					</div>
 				{% endfor %}
 			</div>
