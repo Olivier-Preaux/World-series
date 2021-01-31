@@ -27,16 +27,16 @@ use Symfony\Component\Mailer\MailerInterface;
 class ProgramController extends AbstractController
 {
     /**
-     * @Route("/", name="program_index", methods={"GET"})
+     * @Route("/", name="program_index", methods={"GET","POST"})
      */
-    public function index( Request $request, ProgramRepository $programRepository): Response
-    {   
+    public function index(Request $request, ProgramRepository $programRepository): Response
+    {
         $form = $this->createForm(SearchProgramFormType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $search = $form->getData()['search'];
-            $programs = $programRepository->findBy(['title' => $search]);
+            $programs = $programRepository->findLikeName($search);
         } else {
             $programs = $programRepository->findAll();
         }
