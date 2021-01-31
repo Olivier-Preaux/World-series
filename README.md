@@ -1,5 +1,11 @@
 # World-series
 
+Quête 23 :
+https://www.loom.com/share/ec859b017da54d4a9d9a9a6007b4b419
+
+Quête 22 :
+https://www.loom.com/share/e924296f0d534c969c0be58695d35a06
+
 Quête 21 :
 https://www.loom.com/share/20d0420a000e4ae68afe69f9fe63bffd
 
