@@ -54,10 +54,10 @@
 			{% endif %}
 
                 {% if app.user == comment.author %}                   
-                    <a href="{{ path('comment_edit', {'id': comment.id}) }}">edit</a>
+                    <a href="{{ path('comment_edit', {'id': comment.id}) }}">edit</a></br>
                      <a href="{{ path('comment_delete', {'id': comment.id}) }}">delete</a>
                 {% endif %}    
-                 <a href="{{ path('comment_show', {'id': comment.id}) }}">show</a>
+                 </br><a href="{{ path('comment_show', {'id': comment.id}) }}">show</a>
                 </td>
             </tr>
         {% else %}

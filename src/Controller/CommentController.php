@@ -72,7 +72,7 @@ class CommentController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'comment_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Comment $comment, episode $episode , CommentRepository $commentRepository): Response
+    public function edit(Request $request, Comment $comment): Response
     {
 
         // Check wether the logged in user is the owner of the program
@@ -89,8 +89,7 @@ class CommentController extends AbstractController
             return $this->redirectToRoute('comment_index');
         }
 
-        return $this->render('comment/edit.html.twig', [          
-            'episode' => $episode, 
+        return $this->render('comment/edit.html.twig', [
             'comment' => $comment,
             'form' => $form->createView(),
         ]);
