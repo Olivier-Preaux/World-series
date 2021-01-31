@@ -52,7 +52,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface{
                             ],
         'Viking' => [
                             'summary' => 'Les exploits d\'un groupe de Vikings mené par Ragnar Lothbrok, l\un des vikings les plus populaires de son époque et au destin semi-légendaire, sont narrés par la série. Ragnar serait d\'origine norvégienne et suédoise, selon les sources. Il est supposé avoir unifié les clans vikings en un royaume aux frontières indéterminées à la fin du viiie siècle (le roi Ecbert mentionne avoir vécu à la cour du roi Charlemagne, sacré empereur en l\'an 800). Mais il est surtout connu pour avoir été le promoteur des tout premiers raids vikings en terres chrétiennes, qu\'elles soient saxonnes, franques ou celtiques.',
-                            'category' => 'categorie_1',
+                            'category' => 'categorie_5',
                             'poster' => 'https://i.pinimg.com/originals/95/87/46/9587468e8f263cf46fdbb1e21e18918f.jpg'
                             ],
         'Le jeu de la Dame' => [
@@ -62,12 +62,12 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface{
                                 ], 
         'Breaking Bad'=> [
                             'summary' => 'La série se concentre sur Walter White, un professeur de chimie surqualifié et père de famille, qui, ayant appris qu\'il est atteint d\'un cancer du poumon en phase terminale, sombre dans le crime pour assurer l\'avenir financier de sa famille. Pour cela, il se lance dans la fabrication et la vente de méthamphétamine avec l\'aide de l\'un de ses anciens élèves, Jesse Pinkman2. L\'histoire se déroule à Albuquerque, au Nouveau-Mexique.',
-                            'category' => 'categorie_2',
+                            'category' => 'categorie_5',
                             'poster' => 'https://fr.web.img5.acsta.net/pictures/19/06/18/12/11/3956503.jpg'
                                         ],     
         'The Witcher'=> [
                             'summary' => 'Le sorceleur Geralt, un chasseur de monstres mutant, se bat pour trouver sa place dans un monde où les humains se révèlent souvent plus vicieux que les bêtes.',
-                            'category' => 'categorie_4',
+                            'category' => 'categorie_1',
                             'poster' => 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSyN85JQSuwzb6AXatDSoCIkzN-GdNWKTegJ6q0pbC-0jNnoLoQ'
                                                         ],                                   
         'Walking Dead' => [
@@ -82,7 +82,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface{
     {   
         $i= 0 ;
 
-        foreach (self::PROGRAMS as $programTitle => [ 'summary' => $programSummary , 'category' => $catégory , 'poster'=> $poster ] ){
+        foreach (self::PROGRAMS as $programTitle => [ 'summary' => $programSummary , 'category' => $categoryName , 'poster'=> $poster ] ){
             
            
             
@@ -96,7 +96,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface{
             $i++ ;
             $slug = $slugify->generate($program->getTitle() ?? '');
             $program->setSlug($slug);
-            $program->setCategory($this->getReference('category_4'));
+            $program->setCategory($this->getReference($categoryName));
             $manager->persist($program);
 
            
