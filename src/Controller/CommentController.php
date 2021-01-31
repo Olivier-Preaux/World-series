@@ -75,8 +75,8 @@ class CommentController extends AbstractController
     public function edit(Request $request, Comment $comment): Response
     {
 
-        // Check wether the logged in user is the owner of the program
-        if (!($this->getUser() == $comment->getAuthor())) {
+        // Check wether the logged in user is the owner of the program / or admin
+        if (!(($this->getUser() == $comment->getAuthor()) OR ($this->isGranted('ROLE_ADMIN')) )) {
             // If not the owner, throws a 403 Access Denied exception
             throw new AccessDeniedException('Only the author can edit the comment!');
         }
@@ -97,7 +97,13 @@ class CommentController extends AbstractController
 
     #[Route('/{id}', name: 'comment_delete', methods: ['DELETE'])]
     public function delete(Request $request, Comment $comment): Response
-    {
+    {   
+        // Check wether the logged in user is the owner of the program / or admin
+        if (!(($this->getUser() == $comment->getAuthor()) OR ($this->isGranted('ROLE_ADMIN')) )) {
+            // If not the owner, throws a 403 Access Denied exception
+            throw new AccessDeniedException('Only the author can edit the comment!');
+        }
+        
         if ($this->isCsrfTokenValid('delete'.$comment->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($comment);
