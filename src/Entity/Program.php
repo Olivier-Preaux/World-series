@@ -50,6 +50,7 @@ class Program
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="programs")
+     * @Assert\NotBlank
      */
     private $category;
 
