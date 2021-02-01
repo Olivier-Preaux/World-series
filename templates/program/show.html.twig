@@ -15,60 +15,62 @@
 				</div>
 				<div class='programBlock'>
 					<h1>{{ program.title }}
-					</h1>
+						{% if app.user %}
 
-					<h2>{{ program.category.name }}</h2>
- 				{% if app.user %}
-
-                    <a id="watchlist" href="{{ path('program_watchlist', {'id': program.id})}}">
-                        <i class="{{ app.user.isInWatchlist(program) ? 'fas' : 'far' }} fa-heart"></i>  </a>                 </a>
-
-                {% endif %}
-
-					<p></p>
-					<p>
-						<strong>Résumé :
-						</strong>
-						{{ program.summary }}</p>
-				</div>
-				<div class='actorBlock'>
-					<p>
-						<h2>Acteurs :</h2>
-					</p>
-
-					{% for actor in program.actors %}
-						<div class='actors'>
-							<a href="{{ path('actor_show', { 'id': actor.id } ) }}">
-								{{ actor.name }}</a>
-						</div>
-					{% else %}
-						Aucun acteur pour cette série
-					{% endfor %}
-				</div>
-
-			</div>
-			<div class="seasons">
-				{% for season in seasons %}
-					<div>
+							<a id="watchlist" href="{{ path('program_watchlist', {'id': program.id})}}">
+								<i class="{{ app.user.isInWatchlist(program) ? 'fas' : 'far' }} fa-heart"></i>
+							</a>
 						
-							<h4><a href="{{ path('program_show_season' , { 'slug' : program.slug , 'season_id': season.id }) }}">Saisons :
-								{{ season.number }}
-							- Année :
-							{{ season.year }}</h4></a>
-							Description :{{ season.description }}
+
+					{% endif %}
+				</h1>
+
+				<h2>{{ program.category.name }}</h2>
+
+
+				<p></p>
+				<p>
+					<strong>Résumé :
+					</strong>
+					{{ program.summary }}</p>
+			</div>
+			<div class='actorBlock'>
+				<p>
+					<h2>Acteurs :</h2>
+				</p>
+
+				{% for actor in program.actors %}
+					<div class='actors'>
+						<a href="{{ path('actor_show', { 'id': actor.id } ) }}">
+							{{ actor.name }}</a>
 					</div>
+				{% else %}
+					Aucun acteur pour cette série
 				{% endfor %}
 			</div>
 
+		</div>
+		<div class="seasons">
+			{% for season in seasons %}
+				<div>
 
-		</br>
-
-		<div class='centre'>
-			{% if is_granted("ROLE_ADMIN") %}
-				<a href="{{ path('program_edit', { 'slug': program.slug} ) }}">Éditer le Programme</a></br>
-				<a href="{{ path('season_new') }}">Ajouter Nouvelle saisons</a>
-				{{ include('program/_delete_form.html.twig') }}
-			{% endif %}
+					<h4>
+						<a href="{{ path('program_show_season' , { 'slug' : program.slug , 'season_id': season.id }) }}">Saisons :
+							{{ season.number }}
+							- Année :
+							{{ season.year }}</h4>
+					</a>
+					Description :{{ season.description }}
+				</div>
+			{% endfor %}
 		</div>
 	</body>
-</div></body>{% endblock %}
+</br>
+
+<div class='centre'>
+	{% if is_granted("ROLE_ADMIN") %}
+		<a href="{{ path('program_edit', { 'slug': program.slug} ) }}">Éditer le Programme</a>
+	</br>
+	<a href="{{ path('season_new') }}">Ajouter Nouvelle saisons</a>
+	{{ include('program/_delete_form.html.twig') }}
+{% endif %}</div></body></div></body>{% endblock %}

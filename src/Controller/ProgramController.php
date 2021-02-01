@@ -22,7 +22,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Mailer\MailerInterface;
 
-
 /**
  * @Route("/program")
  */
@@ -209,8 +208,10 @@ class ProgramController extends AbstractController
         }
 
         $entityManager->flush();
-
-
+        
+        // return $this->json([
+        //     'isInWatchlist' => $this->getUser()->isInWatchlist($program)
+        // ]);
         return $this->redirectToRoute('program_show', ['slug' => $program->getSlug()]);
     }
 
