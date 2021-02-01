@@ -13,6 +13,8 @@ use App\Repository\CommentRepository;
 use App\Repository\ProgramRepository;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use App\Service\Slugify;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -117,7 +119,8 @@ class ProgramController extends AbstractController
             // Once the form is submitted, valid and the data inserted in database, you can define the success flash message
             $this->addFlash('success', 'Le nouveau Programme a été modifié ! ');
 
-            return $this->redirectToRoute('program_index');
+            // return $this->redirectToRoute('program_index');
+            return $this->redirectToRoute('program_show', ['slug' => $program->getSlug()]);
         }
 
         return $this->render('program/edit.html.twig', [
@@ -192,4 +195,23 @@ class ProgramController extends AbstractController
 
         ]);
     }
+
+    /**
+     * @Route("/{id}/watchlist", name="program_watchlist", methods={"GET","POST"})
+     */
+    public function addToWatchlist(Request $request, Program $program, EntityManagerInterface $entityManager): Response
+    {
+        if ($this->getUser()->getWatchlist()->contains($program)) {
+            $this->getUser()->removeWatchlist($program);
+        }
+        else {
+            $this->getUser()->addWatchlist($program);
+        }
+
+        $entityManager->flush();
+
+
+        return $this->redirectToRoute('program_show', ['slug' => $program->getSlug()]);
+    }
+
 }

@@ -31,6 +31,7 @@ class UserFixtures extends Fixture
          $user->setRoles(['ROLE_USER']);
          $user->setUsername($faker->firstNameMale);
          $user->setBio($faker->sentence(20));
+         $user->setIsInWatchlist('false');
          $user->setPassword($this->passwordEncoder->encodePassword(
              $user,
              '123456'
@@ -46,6 +47,7 @@ class UserFixtures extends Fixture
         $contributor->setRoles(['ROLE_CONTRIBUTOR']);
         $contributor->setUsername($faker->firstNameFemale);
         $contributor->setBio($faker->sentence(20));
+        $contributor->setIsInWatchlist('false');
         $contributor->setPassword($this->passwordEncoder->encodePassword(
             $contributor,
             '123456'
@@ -62,6 +64,7 @@ class UserFixtures extends Fixture
         $admin->setRoles(['ROLE_ADMIN']);
         $admin->setUsername('Olivier');
         $admin->setBio($faker->sentence(20));
+        $admin->setIsInWatchlist('false');
         $admin->setPassword($this->passwordEncoder->encodePassword(
             $admin,
             'adminpassword'
