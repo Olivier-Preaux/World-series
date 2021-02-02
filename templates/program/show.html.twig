@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block body %}
-	<body>
+	
 		<div class='containerPage'>
 
 
@@ -15,14 +15,7 @@
 				</div>
 				<div class='programBlock'>
 					<h1>{{ program.title }}
-						{% if app.user %}
-
-							<a id="watchlist" href="{{ path('program_watchlist', {'id': program.id})}}">
-								<i class="{{ app.user.isInWatchlist(program) ? 'fas' : 'far' }} fa-heart"></i>
-							</a>
 						
-
-					{% endif %}
 				</h1>
 
 				<h2>{{ program.category.name }}</h2>
@@ -33,6 +26,15 @@
 					<strong>Résumé :
 					</strong>
 					{{ program.summary }}</p>
+
+					{% if app.user %}
+					<div class="favori">Favori
+							<a id="watchlist" href="{{ path('program_watchlist', {'id': program.id})}}">
+							 	<i class="{{ app.user.isInWatchlist(program) ? 'fas' : 'far' }} fa-heart"></i>
+							</a>
+						</div>
+
+					{% endif %}
 			</div>
 			<div class='actorBlock'>
 				<p>
@@ -60,17 +62,24 @@
 							- Année :
 							{{ season.year }}</h4>
 					</a>
-					Description :{{ season.description }}
+					Description :{{ season.description|striptags|u.truncate(70,  '...') }}
 				</div>
 			{% endfor %}
 		</div>
-	</body>
-</br>
+	
 
-<div class='centre'>
-	{% if is_granted("ROLE_ADMIN") %}
-		<a href="{{ path('program_edit', { 'slug': program.slug} ) }}">Éditer le Programme</a>
-	</br>
-	<a href="{{ path('season_new') }}">Ajouter Nouvelle saisons</a>
-	{{ include('program/_delete_form.html.twig') }}
-{% endif %}</div></body></div></body>{% endblock %}
+
+		<div class='centreButton'>
+			{% if is_granted("ROLE_ADMIN") %}
+				<a class="btn btn-secondary" href="{{ path('season_new') }}">+ Ajouter nouvelle saison</a>
+			
+
+				<a class="btn btn-secondary" href="{{ path('program_edit', { 'slug': program.slug} ) }}">Éditer le Programme</a>
+			
+			
+				{{ include('program/_delete_form.html.twig') }}
+			{% endif %}
+		</div>
+</div>
+
+{% endblock %}

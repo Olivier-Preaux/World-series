@@ -43,8 +43,8 @@
 
 
 			{% if is_granted("ROLE_ADMIN" , "ROLE_CONTRIBUTOR") %}
-				<div class='indexPathCreateProgram'>
-					<a href="{{ path('program_new') }}">+ Ajouter une serie
+				<div class='indexPathCreateProgram'><button type="button" class="btn btn-secondary">
+					<a href="{{ path('program_new') }}">+ Ajouter une série </button>
 					</a>
 				</div>
 			{% endif %}

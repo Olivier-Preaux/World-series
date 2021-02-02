@@ -7,10 +7,22 @@
 
 body {
     font-family: "Excellence" ,impact , helvetica , arial, sans-serif;
-    background-color : #484d53;         
+    background-image: url("../../assets/images/images/wallpaper2.jpg"); 
+    background-position: center;
+    // background-attachment: fixed;
+    background-size: cover;
     font-size : 16px ;
+    height : 100% ;
     color : rgb(179, 179, 179) ;
    
+}
+
+button {
+  color:white ;
+}
+
+button a {
+  color: white 
 }
 
 .containerPage{
@@ -114,7 +126,7 @@ body {
 
   .indexPathCreateProgram{
     text-align : center ;
-    font-size: 2em ;
+    font-size: 2.5em ;
   }
 
 
@@ -163,6 +175,15 @@ div {
  background: linear-gradient(145deg, #44474c, #50555a);
  box-shadow:  20px 20px 60px #404347,
               -20px -20px 60px #565b61;
+}
+
+.favori a {
+  color :red ;
+}
+
+.favori{  
+  margin-top: 2em ;
+  font-size: 1.5em ;
 }
 
 .programBlock h1{
@@ -241,6 +262,21 @@ background: linear-gradient(145deg, #44474c, #50555a);
 
 .seasons a{
   color : black ;
+}
+
+.centreButton{
+  display : flex ;
+  text-align: center ;
+  justify-content: center;
+}
+
+.centreButton a {
+  margin-right: 1em ;
+  margin-top: 0.5em ;
+}
+
+.centreButton button {
+  margin-top: 0.5em ;
 }
 
 //// CSS Email 
