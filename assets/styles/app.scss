@@ -69,16 +69,15 @@ button a {
 
 
 ////////////////// PAGE INDEX ////////////////////
-.containerPage h1 {
-  text-align: center ;
-  padding-left: 3em ;
-  text-shadow: -1px 0 black, 0 1px black ,
-        1px 0 black , 0 -1px black ;
- 
-  margin-top : 1.5vh ;
-  font-weight: bold ;
 
+.containerPage h1 {
+  text-align: center;    
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  margin-top: 1.5vh;
+  font-weight: bold; 
 }
+
+
 
 .formSearch {
   display : flex ;
@@ -174,9 +173,12 @@ div {
  font-size : 20px ;
  margin-top: 1em ;
  border-radius: 50px;
- background: linear-gradient(145deg, #44474c, #50555a);
- box-shadow:  20px 20px 60px #404347,
-              -20px -20px 60px #565b61;
+ background: rgba( 153, 153, 153, 0.55 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 3.0px );
+-webkit-backdrop-filter: blur( 3.0px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
 .favori a {
@@ -224,10 +226,12 @@ color : rgb(0, 0, 0) ;
   text-align: center;
   font-size : 20px ;
   margin-top: 1em ;
-  // border-radius: 50px;
-  background: linear-gradient(145deg, #44474c, #50555a);
-  // box-shadow:  20px 20px 60px #404347,
-  //              -20px -20px 60px #565b61;
+  background: rgba( 153, 153, 153, 0.55 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 3.0px );
+-webkit-backdrop-filter: blur( 3.0px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
  }
 
 table {
@@ -247,15 +251,18 @@ padding : 5px ;
 
 .seasons {
 display: grid;
+margin-left: 1em ;
+margin-right: 1em ;
 
 grid-template-columns: 1fr 1fr 1fr 1fr 1fr ;
 grid-template-rows: 1fr 1fr ;
 gap: 10px 0px;
-border-radius: 5px;
-background: linear-gradient(145deg, #44474c, #50555a);
-  box-shadow:  20px 20px 60px #404347,
-               -20px -20px 60px #565b61;
-}
+background: rgba( 153, 153, 153, 0.55 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 3.0px );
+-webkit-backdrop-filter: blur( 3.0px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );}
 
 
 .seasons div {
