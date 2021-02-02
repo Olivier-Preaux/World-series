@@ -1,0 +1,14 @@
+welcome: Welcome
+account.sign_in: 'Sign In'
+account.register: 'Create Account'
+'Bienvenue !': 'Welcome !'
+'Toutes les séries': 'All series'
+'Tous les acteurs': 'All actors'
+'Salut ': 'Hello '
+'Mon compte': 'My account'
+'Se déconnecter': 'Logout'
+account.logout: Logout
+account.login: Login
+'TOUTES LES SERIES': 'ALL THE SERIES'
+Rechercher: Search
+'Ajouter une série': 'Add a serie'

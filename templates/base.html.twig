@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="icon" type="image/png" href="{{ asset('build/images/favicon.png') }}"/>
 		<title>
-			{% block title %}Welcome!
+			{% block title %}{{'Bienvenue !'|trans}}
 			{% endblock %}
 		</title>
 		{% block stylesheets %}
@@ -18,41 +18,51 @@
 	<body>
 
 		{% block navbar %}
-			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-				<div class="container-fluid">
-					<a class="navbar-brand" href="#">WILDSERIES</a>
-					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="{{ path('program_index') }}">
-									Liste des programmes
-								</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="{{ path('actor_index') }}">Liste des acteurs</a>
-							</li>
+			<nav class="navbarContainer">
+				<div class="navbarBlocks">
+									
+					<div class="navbarBlock1" >
+						<div><h2> WILDSERIES</h2></div>
+						<div><a  href="{{ path('program_index') }}">{{'Toutes les séries'|trans}}</a></div>
+						<div><a href="{{ path('actor_index') }}">{{'Tous les acteurs'|trans}}</a></div>
+					</div>
+							
+							
+						
+						
+					<div class="navbarBlock2">
 
-							<li class="nav-item dropdown"></li>
-
-						</ul>
-						<div class="blocLoginLogout">
-							{% if app.user %}
-								<a class="aregister" href="{{ path('user_profile', { 'id' : app.user.getId }) }}">
-									Mon compte</a>
-							</br>
-							<a href="{{ path('app_logout') }}">
-								Se déconnecter</a>
+						
+						
+						<div>{% if app.user %}
+							{{'Salut '|trans}}{{ app.user.email}}</div>
+       							
+   								
+						<div><a class="aregister" href="{{ path('user_profile', { 'id' : app.user.getId }) }}">
+							{{'Mon compte'|trans}}</a></div>
+							
+						<div><a href="{{ path('app_logout') }}">
+							{{'Se déconnecter'|trans}}</a></div>
 						{% else %}
-							<a class="aregister" href="{{ path('app_login') }}">
-								Se connecter</a>
-							<a class="senregistrer" href="{{ path('app_register') }}">
-								S'enregistrer</a>
+						<div><a class="aregister" href="{{ path('app_login') }}">
+								{{ 'account.logout'|trans }}</a></div>
+						<div><a class="senregistrer" href="{{ path('app_register') }}">
+								{{'account.login'|trans}}</a></div>
 						{% endif %}
+
+						<div class="custom-select" style="width:200px;">
+							
+								<a class="dropdown-item" href="{{ path('program_index', {_locale: 'fr'}) }}"><img src="{{ asset('build/images/French.png')}}" width=30px height=30px > Français</a>
+								
+								<a class="dropdown-item" href="{{ path('program_index', {_locale: 'en'}) }}"><img src="{{ asset('build/images/English.png')}}" width=30px height=30px > English</a>
+								
+						</div>
+
+						
+
 					</div>
 				</div>
+				
 			</nav>
 		{% endblock %}
 

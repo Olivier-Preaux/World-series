@@ -43,7 +43,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface{
         'Game Of Throne' => [
                             'summary' => 'Sur le continent de Westeros, le roi Robert Baratheon gouverne le Royaume des Sept Couronnes depuis plus de dix-sept ans, à la suite de la rébellion qu\'il a menée contre le « roi fou » Aerys II Targaryen. Jon Arryn, époux de la sœur de Lady Catelyn Stark, Lady Arryn, son guide et principal conseiller, vient de s\'éteindre, et le roi part alors dans le nord du royaume demander à son vieil ami Eddard « Ned » Stark de remplacer leur regretté mentor au poste de Main du roi. Ned, seigneur suzerain du nord depuis Winterfell et de la maison Stark, est peu désireux de quitter ses terres. Mais il accepte à contre-cœur de partir pour la capitale Port-Réal avec ses deux filles, Sansa et Arya. ',
                             'category' => 'categorie_5',
-                            'poster' => 'https://lh3.googleusercontent.com/proxy/u6PSVAT3NNL1swPGLZj_AW0o3Fn9o0kU52ENqgFJNv0BRd3nJdlR1UtttkeKLWpoQHiOx5vkPICquFtD2RrnyL7lss5Vb5O7kjYM5kGUMpLJpvjhEzo64KUKHFMnW5ZBEvZg4vX-WBvETbWIcEeOJvcG_YiN7w',
+                            'poster' => 'https://static.posters.cz/image/750/affiches/game-of-thrones-winter-is-here-daenerys-i49290.jpg',
                             ],
         'Penny Dreadful' => [
                             'summary' => 'Dans le Londres ancien, Vanessa Ives, une jeune femme puissante aux pouvoirs hypnotiques, allie ses forces à celles de Ethan, un garçon rebelle et violent aux allures de cowboy, et de Sir Malcolm, un vieil homme riche aux ressources inépuisables. Ensemble, ils combattent un ennemi inconnu, presque invisible, qui ne semble pas humain et qui massacre la population.',

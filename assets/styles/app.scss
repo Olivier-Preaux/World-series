@@ -6,6 +6,8 @@
 
 
 body {
+    margin : 0;
+    padding : 0 ;
     font-family: "Excellence" ,impact , helvetica , arial, sans-serif;
     background-image: url("../../assets/images/images/wallpaper4.jpg"); 
     background-position: center;
@@ -15,14 +17,6 @@ body {
     height : 100% ;
     color : rgb(179, 179, 179) ;
    
-}
-
-button {
-  color:white ;
-}
-
-button a {
-  color: white 
 }
 
 .containerPage{
@@ -49,22 +43,47 @@ button a {
 }
 
 ////////// NAVBAR ////////////////
-
-.blocLoginLogout{  
+.navbarBlocks{
   display :flex ;
-  width : 20em ;
-  text-align: center ;
+  justify-content: space-between;  
+  background-color: black;  
 }
 
-.blocLoginLogout .aregister{
-  margin-right: 1em ;
-  color : white ;
+.navbarBlock1 {
+  display : flex ; 
+  
 }
 
-.senregistrer {
-  color : white ;
+.navbarBlock1 div {  
+  margin-right : 1em ;
+  margin-left : 1em ;
+  margin-top: auto ;
+  margin-bottom: auto ;
+ }
+
+ .navbarBlock1 div a {
+  color :blanchedalmond ;
+  font-weight: 2em ;
 }
 
+.navbarBlock2 {
+  display : flex ;
+}
+
+.navbarBlock2 div {  
+  margin-right : 1em ;
+  margin-left : 1em ; 
+  margin-top: auto ;
+  margin-bottom: auto ;
+}
+
+.navbarBlock2 div a {
+  color :blanchedalmond ;
+  font-weight: 2em ;
+}
+
+
+//NAV LANGUE
 
 
 
@@ -140,10 +159,6 @@ button a {
   margin-top: 1em ;
   }
 
-div {
-  margin : 2px ;
-  padding : 2px ;
-}
 
 .poster {
  

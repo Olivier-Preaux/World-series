@@ -12,14 +12,14 @@
 
 			<div class="formSearch">
 				<div>
-					<h1>TOUTES LES SERIES</h1>
+					<h1>{{'TOUTES LES SERIES'|trans}}</h1>
 				</div>
 
 				<div>{{ form_start(form) }}</div>
 				<div>{{ form_row(form.search) }}</div>
 
 				<div>
-					<button class="btn btn-outline-primary" type="submit">Rechercher</button>
+					<button class="btn btn-outline-primary" type="submit">{{'Rechercher'|trans}}</button>
 				</div>
 				<div>{{ form_end(form) }}</div>
 			</div>
@@ -44,7 +44,7 @@
 
 			{% if is_granted("ROLE_ADMIN" , "ROLE_CONTRIBUTOR") %}
 				<div class='indexPathCreateProgram'><button type="button" class="btn btn-secondary">
-					<a href="{{ path('program_new') }}">+ Ajouter une série </button>
+					<a href="{{ path('program_new') }}">{{'Ajouter une série'|trans}}</button>
 					</a>
 				</div>
 			{% endif %}
