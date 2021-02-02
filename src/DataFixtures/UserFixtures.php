@@ -40,7 +40,7 @@ class UserFixtures extends Fixture
          $manager->persist($user);
 
         //Generate Women Users
-        for ($i = 0; $i <= 10; $i++) {
+        for ($i = 0; $i <= 12; $i++) {
         // Création d’un utilisateur de type “contributeur” (= auteur)
         $contributor = new User();
         $contributor->setEmail($faker->email);

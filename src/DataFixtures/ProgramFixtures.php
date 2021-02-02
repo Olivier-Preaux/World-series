@@ -40,6 +40,11 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface{
                             'category' => 'categorie_4',
                             'poster' => 'https://m.media-amazon.com/images/M/MV5BMTc1MjIyNDI3Nl5BMl5BanBnXkFtZTgwMjQ1OTI0NzM@._V1_SY1000_CR0,0,674,1000_AL_.jpg',
                             ],
+        'Game Of Throne' => [
+                            'summary' => 'Sur le continent de Westeros, le roi Robert Baratheon gouverne le Royaume des Sept Couronnes depuis plus de dix-sept ans, à la suite de la rébellion qu\'il a menée contre le « roi fou » Aerys II Targaryen. Jon Arryn, époux de la sœur de Lady Catelyn Stark, Lady Arryn, son guide et principal conseiller, vient de s\'éteindre, et le roi part alors dans le nord du royaume demander à son vieil ami Eddard « Ned » Stark de remplacer leur regretté mentor au poste de Main du roi. Ned, seigneur suzerain du nord depuis Winterfell et de la maison Stark, est peu désireux de quitter ses terres. Mais il accepte à contre-cœur de partir pour la capitale Port-Réal avec ses deux filles, Sansa et Arya. ',
+                            'category' => 'categorie_5',
+                            'poster' => 'https://lh3.googleusercontent.com/proxy/u6PSVAT3NNL1swPGLZj_AW0o3Fn9o0kU52ENqgFJNv0BRd3nJdlR1UtttkeKLWpoQHiOx5vkPICquFtD2RrnyL7lss5Vb5O7kjYM5kGUMpLJpvjhEzo64KUKHFMnW5ZBEvZg4vX-WBvETbWIcEeOJvcG_YiN7w',
+                            ],
         'Penny Dreadful' => [
                             'summary' => 'Dans le Londres ancien, Vanessa Ives, une jeune femme puissante aux pouvoirs hypnotiques, allie ses forces à celles de Ethan, un garçon rebelle et violent aux allures de cowboy, et de Sir Malcolm, un vieil homme riche aux ressources inépuisables. Ensemble, ils combattent un ennemi inconnu, presque invisible, qui ne semble pas humain et qui massacre la population.',
                             'category' => 'categorie_4',
@@ -50,11 +55,16 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface{
                             'category' => 'categorie_4',
                             'poster' => 'https://m.media-amazon.com/images/M/MV5BYWNmY2Y1NTgtYTExMS00NGUxLWIxYWQtMjU4MjNkZjZlZjQ3XkEyXkFqcGdeQXVyMzQ2MDI5NjU@._V1_SY1000_CR0,0,666,1000_AL_.jpg',
                             ],
-        'Viking' => [
+        'Prison Break' => [
+                            'summary' => 'Lincoln Burrows, un petit truand, est accusé à tort d\'avoir tué le frère de la vice-présidente des États-Unis. Condamné à mort, il est incarcéré dans le pénitencier d\'État de Fox River, dans l\'attente de son exécution. Son frère, Michael Scofield, un ingénieur surdoué convaincu de son innocence, va l\'aider à s\'évader avant la date fatidique. Pour cela, Michael se fait tatouer les plans de la prison sur le torse, les bras et le dos, puis il commet un braquage afin d\'y être incarcéré à son tour. Une fois emprisonné à Fox River, Michael va chercher à s\'évader en compagnie de son frère, à l\'aide des plans qu\'il s\'est fait tatouer sur le corps.',
+                            'category' => 'categorie_5',
+                            'poster' => 'https://fr.web.img4.acsta.net/pictures/18/10/30/14/28/5858042.jpg'
+                            ],
+        'Vikings' => [
                             'summary' => 'Les exploits d\'un groupe de Vikings mené par Ragnar Lothbrok, l\un des vikings les plus populaires de son époque et au destin semi-légendaire, sont narrés par la série. Ragnar serait d\'origine norvégienne et suédoise, selon les sources. Il est supposé avoir unifié les clans vikings en un royaume aux frontières indéterminées à la fin du viiie siècle (le roi Ecbert mentionne avoir vécu à la cour du roi Charlemagne, sacré empereur en l\'an 800). Mais il est surtout connu pour avoir été le promoteur des tout premiers raids vikings en terres chrétiennes, qu\'elles soient saxonnes, franques ou celtiques.',
                             'category' => 'categorie_5',
                             'poster' => 'https://i.pinimg.com/originals/95/87/46/9587468e8f263cf46fdbb1e21e18918f.jpg'
-                            ],
+                            ],                       
         'Le jeu de la Dame' => [
                             'summary' => 'En pleine Guerre froide, le parcours de huit à vingt-deux ans d\'une jeune orpheline prodige des échecs, Beth Harmon. Tout en luttant contre une addiction, elle va tout mettre en place pour devenir la plus grande joueuse d’échecs du monde.',
                             'category' => 'categorie_5',
