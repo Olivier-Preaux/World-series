@@ -1,5 +1,8 @@
 # World-series
 
+Quête 25 :
+https://www.loom.com/share/06c6c7b25c8a4a209e43025de512f45a
+
 Quête 24 :
 https://www.loom.com/share/b642db9e3e4a409ab152679ff6b88dac
 
