@@ -22,7 +22,7 @@
 				<div class="navbarBlocks">
 									
 					<div class="navbarBlock1" >
-						<div><h2> WILDSERIES</h2></div>
+						<div><h1> WILDSERIES</h1></div>
 						<div><a  href="{{ path('program_index') }}">{{'Toutes les séries'|trans}}</a></div>
 						<div><a href="{{ path('actor_index') }}">{{'Tous les acteurs'|trans}}</a></div>
 					</div>
@@ -34,20 +34,15 @@
 
 						
 						
-						<div>{% if app.user %}
-							{{'Salut '|trans}}{{ app.user.email}}</div>
+						{% if app.user %}<div>{{'Salut '|trans}}{{ app.user.email}}</div>
        							
    								
-						<div><a class="aregister" href="{{ path('user_profile', { 'id' : app.user.getId }) }}">
-							{{'Mon compte'|trans}}</a></div>
+						<div><a class="aregister" href="{{ path('user_profile', { 'id' : app.user.getId }) }}">{{'Mon compte'|trans}}</a></div>
 							
-						<div><a href="{{ path('app_logout') }}">
-							{{'Se déconnecter'|trans}}</a></div>
+						<div><a href="{{ path('app_logout') }}">{{'Se déconnecter'|trans}}</a></div>
 						{% else %}
-						<div><a class="aregister" href="{{ path('app_login') }}">
-								{{ 'account.logout'|trans }}</a></div>
-						<div><a class="senregistrer" href="{{ path('app_register') }}">
-								{{'account.login'|trans}}</a></div>
+						<div><a class="aregister" href="{{ path('app_login') }}">{{ 'account.logout'|trans }}</a></div>
+						<div><a class="senregistrer" href="{{ path('app_register') }}">{{'account.login'|trans}}</a></div>
 						{% endif %}
 
 						<div class="custom-select" style="width:200px;">

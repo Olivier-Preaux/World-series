@@ -49,6 +49,10 @@ body {
   background-color: black;  
 }
 
+.navbarBlocks h1 {
+  font-size: 4em ;
+}
+
 .navbarBlock1 {
   display : flex ; 
   
@@ -68,6 +72,7 @@ body {
 
 .navbarBlock2 {
   display : flex ;
+  flex-direction: row;
 }
 
 .navbarBlock2 div {  
@@ -106,8 +111,8 @@ body {
 }
 
 .formSearch h1 {
-  margin-right : 4.5em  ;
-  margin-left: 20em ;
+  margin-right : 5.6em  ;
+  margin-left: 20.1em ;
 }
 
 .col-sm-10 {

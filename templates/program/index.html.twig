@@ -19,7 +19,7 @@
 				<div>{{ form_row(form.search) }}</div>
 
 				<div>
-					<button class="btn btn-outline-primary" type="submit">{{'Rechercher'|trans}}</button>
+					<button class="btn btn-secondary" type="submit">{{'Rechercher'|trans}}</button>
 				</div>
 				<div>{{ form_end(form) }}</div>
 			</div>
@@ -43,8 +43,8 @@
 
 
 			{% if is_granted("ROLE_ADMIN" , "ROLE_CONTRIBUTOR") %}
-				<div class='indexPathCreateProgram'><button type="button" class="btn btn-secondary">
-					<a href="{{ path('program_new') }}">{{'Ajouter une série'|trans}}</button>
+				<div class='indexPathCreateProgram'>
+					<a class="btn btn-secondary" href="{{ path('program_new') }}">{{'Ajouter une série'|trans}}
 					</a>
 				</div>
 			{% endif %}
