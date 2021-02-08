@@ -25,7 +25,23 @@
 						<div><h1> WILDSERIES</h1></div>
 						<div><a  href="{{ path('program_index') }}">{{'Toutes les séries'|trans}}</a></div>
 						<div><a href="{{ path('actor_index') }}">{{'Tous les acteurs'|trans}}</a></div>
+
+
+						<div class="dropdown">
+  <button class="dropbtn">Catégories</button>
+  <div class="dropdown-content">    
+	{{ render(controller(
+        'App\\Controller\\HomeController::navbarTop'
+    )) }}
+  </div>
+</div>
+
+						
+
+
 					</div>
+
+
 							
 							
 						
