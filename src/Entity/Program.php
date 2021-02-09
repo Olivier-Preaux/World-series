@@ -3,11 +3,19 @@
 namespace App\Entity;
 
 use App\Repository\ProgramRepository;
+use DateTime;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use App\Entity\Season;
+use App\Entity\Category;
+
+
+
 
 /**
  * @ORM\Entity(repositoryClass=ProgramRepository::class)
@@ -16,6 +24,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     errorPath="title",
  *     message="Ce titre existe déjà."
  * )
+ * @Vich\Uploadable
  */
 class Program
 {
@@ -34,14 +43,32 @@ class Program
     private $title;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $summary;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @var string
      */
     private $poster;
+
+   /**
+     * @ORM\Column(type="datetime", nullable=true)
+     *
+     * @var Datetime
+     *
+     */
+    private $updatedAt;
+
+    /**
+     * @Vich\UploadableField(mapping="poster_file", fileNameProperty="poster")
+     *
+     * @var File|null
+     */
+    private $posterFile;
+
+   
 
     /**
      * @ORM\OneToMany(targetEntity=Season::class, mappedBy="program")
@@ -68,6 +95,8 @@ class Program
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="programs")
      */
     private $owner;
+
+    
 
     public function __construct()
     {
@@ -116,6 +145,23 @@ class Program
 
         return $this;
     }
+
+    public function setPosterFile(File $posterFile = null): Program
+    {
+        $this->posterFile = $posterFile;
+
+        if ($posterFile) {
+            $this->updatedAt = new DateTime('now');
+        }
+
+        return $this;
+    }
+
+    public function getPosterFile(): ?File
+    {
+        return $this->posterFile;
+    }
+
 
     /**
      * @return Collection|Season[]
@@ -206,6 +252,18 @@ class Program
     public function setOwner(?User $owner): self
     {
         $this->owner = $owner;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

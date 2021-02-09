@@ -29,7 +29,7 @@
 
 					<div class='containerAffiche'>
 						<a href="{{ path('program_show', { 'slug' : program.slug } ) }}">
-							<img src="{{ program.poster }}" alt="Image {{ loop.index }}"/>
+							<img src="{{ asset('uploads/' ~ program.poster) }}" alt="Poster de {{ program.title }}"/>
 						</a>
 					</div>
 
